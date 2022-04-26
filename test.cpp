@@ -2,6 +2,6 @@
 using namespace std;
 
 int main(){
-    printf("tes5ss55t");
+    printf("代码测试");
     return 0;
 }
