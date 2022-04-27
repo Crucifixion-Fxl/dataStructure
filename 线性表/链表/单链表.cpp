@@ -113,6 +113,7 @@ bool InsertNextNode(LNode *p,int e){
 
 }
 
+// 带头节点：初始化单链表
 bool InitList(LinkList &L){
     L=(LNode *)malloc(sizeof(LNode));
     if(L==NULL){
@@ -122,6 +123,7 @@ bool InitList(LinkList &L){
     return true;
 }
 
+//带头节点判空
 bool Empty(LinkList L){
     if(L->next ==NULL){
         return true;
@@ -131,13 +133,14 @@ bool Empty(LinkList L){
 }
 
 //带头节点  -- 尾插法
-bool ListInsert(LinkList &L),int i ,int e){
+bool ListInsert(LinkList &L,int i ,int e){
     if(i<1){
         return false;
     }
     LNode *p;
     int j = 0;
     p=L;
+    //定位到前驱节点
     while(p!=NULL && j<i-1){
         p=p->next;
         j++;
@@ -147,6 +150,7 @@ bool ListInsert(LinkList &L),int i ,int e){
     }
     LNode *s = (LNode *)malloc(sizeof(LNode));
     s->data = e;
+    //下面这行代码 表示s和p指向相同的位置
     s->next = p->next;
     p->next = s;
     return true;
@@ -157,6 +161,8 @@ bool ListInsert(LinkList &L),int i ,int e){
 LinkList ListInsert(LinkList &L){
     LNode *s;
     int x;
+    //建立头节点 
+    //头节点没有数据域
     L = (LinkList)malloc(sizeof(LNode));
     L->next = NULL;
     scanf("%d",&x);
@@ -170,9 +176,11 @@ LinkList ListInsert(LinkList &L){
     return L;
 }
 
-
-LNode *GetElem(LinkList L,int i ){
-    int j =1;
+//按位查找 所需的元素
+//i为位序 并不是数据小表
+//将 头节点的位序定义为0
+LNode * GetElem(LinkList L,int i ){
+    int j = 1;
     LNode *p = L->next;
     if(i==0){
         return L;
@@ -193,9 +201,12 @@ LNode * LocateElem(LinkList L,int e){
     while(p!=NULL && p->data !=e){
         p = p->next;
     }
+    // 当p为空的时候，代码没有对应的元素 
+    // 如果有则返回对应的 节点
     return p;
 }
 
+// 返回链表的长度：带头节点
 int Length(LinkList L){
     int len = 0;
     LNode *p =L;
