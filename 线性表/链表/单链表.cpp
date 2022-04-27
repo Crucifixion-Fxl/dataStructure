@@ -1,10 +1,12 @@
 // Created on iPad Pro 2021.
 
 #include <iostream>
+
 using namespace std;
 
 typedef struct LNode{
     int data;
+    //定义一个机构体类型的指针 指向下一片区域
     struct LNode *next;
 }LNode,*LinkList;
 
