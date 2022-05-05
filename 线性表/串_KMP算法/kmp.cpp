@@ -87,9 +87,6 @@ void get_nextval(SString T,int nextval[]){
     }
 }
 
-
-
-
 int main() {
     cout << "Hello World!";
     return 0;
